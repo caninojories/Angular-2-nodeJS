@@ -2,7 +2,7 @@
   "name": "angular2-quickstart",
   "version": "1.0.0",
   "scripts": {
-    "start": "concurrently \"npm run tsc:w\" \"nodemon back-end/server.js\" ",
+    "start": "concurrent \"npm run tsc:w\" \"nodemon back-end/server.js\" ",
    "tsc": "tsc",
    "tsc:w": "tsc -w",
    "lite": "lite-server",
@@ -26,12 +26,10 @@
     "serve-favicon": "^2.3.0",
     "systemjs": "0.19.20",
     "typescript": "^1.8.2",
-    "zone.js": "0.5.14"
+    "zone.js": "0.5.14",
+    "ejs": "^2.4.1"
   },
   "devDependencies": {
-    "concurrently": "^1.0.0",
-    "ejs": "^2.4.1",
-    "lite-server": "^2.0.1",
     "typescript": "^1.7.5",
     "typings": "^0.6.8"
   }
