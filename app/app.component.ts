@@ -1,102 +1,61 @@
-import {Component} from 'angular2/core';
-import {Hero} from './hero';
-import {HeroDetailComponent} from './hero-detail.component';
-import { RouteConfig } from 'angular2/router';
+import { Component, provide } from 'angular2/core';
+import { HTTP_PROVIDERS, XHRBackend } from 'angular2/http';
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Redirect, Route } from 'angular2/router';
+import 'rxjs/Rx'; // load the full rxjs
+
+import { InMemoryBackendConfig, InMemoryBackendService, SEED_DATA } from 'a2-in-memory-web-api/core';
+import { InMemoryStoryService } from '../api/in-memory-story.service';
+import { CharactersComponent, CharacterService } from './characters/characters';
 import { DashboardComponent } from './dashboard/dashboard';
-
-var HEROES: Hero[] = [
-  { "id": 11, "name": "Mr. Nice" },
-  { "id": 12, "name": "Narco" },
-  { "id": 13, "name": "Bombasto" },
-  { "id": 14, "name": "Celeritas" },
-  { "id": 15, "name": "Magneta" },
-  { "id": 16, "name": "RubberMan" },
-  { "id": 17, "name": "Dynama" },
-  { "id": 18, "name": "Dr IQ" },
-  { "id": 19, "name": "Magma" },
-  { "id": 20, "name": "Tornado" }
-];
-
+import { VehiclesComponent } from './vehicles/vehicles';
+import { CONFIG, MessageService } from './shared/shared';
+import { EntityService, ExceptionService, ModalComponent, ModalService, SpinnerComponent, SpinnerService, ToastComponent, ToastService } from './blocks/blocks';
 
 @Component({
-  selector: 'my-app',
-  template:`
-  <h1>{{title}}</h1>
-  <h2>My Heroes</h2>
-  <ul class="heroes">
-    <li
-    [class.selected]="hero === selectedHero"
-    *ngFor="#hero of heroes" (click)="onSelect(hero)">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </li>
-  </ul>
-  <my-hero-detail [hero]="selectedHero"></my-hero-detail>
-  `,
-  directives: [HeroDetailComponent],
-  styles:[`
-    .selected {
-      background-color: #CFD8DC !important;
-      color: white;
-    }
-    .heroes {
-      margin: 0 0 2em 0;
-      list-style-type: none;
-      padding: 0;
-      width: 10em;
-    }
-    .heroes li {
-      cursor: pointer;
-      position: relative;
-      left: 0;
-      background-color: #EEE;
-      margin: .5em;
-      padding: .3em 0em;
-      height: 1.6em;
-      border-radius: 4px;
-    }
-    .heroes li.selected:hover {
-      color: white;
-    }
-    .heroes li:hover {
-      color: #607D8B;
-      background-color: #EEE;
-      left: .1em;
-    }
-    .heroes .text {
-      position: relative;
-      top: -3px;
-    }
-    .heroes .badge {
-      display: inline-block;
-      font-size: small;
-      color: white;
-      padding: 0.8em 0.7em 0em 0.7em;
-      background-color: #607D8B;
-      line-height: 1em;
-      position: relative;
-      left: -1px;
-      top: -4px;
-      height: 1.8em;
-      margin-right: .8em;
-      border-radius: 4px 0px 0px 4px;
-    }
-  `]
-
+  selector: 'story-app',
+  templateUrl: 'app/app.component.html',
+  styleUrls: ['app/app.component.css'],
+  directives: [ROUTER_DIRECTIVES, ModalComponent, SpinnerComponent, ToastComponent],
+  providers: [
+    HTTP_PROVIDERS,
+    provide(XHRBackend, { useClass: InMemoryBackendService }),
+    provide(SEED_DATA, { useClass: InMemoryStoryService }),
+    provide(InMemoryBackendConfig, { useValue: { delay: 600 } }),
+    ROUTER_PROVIDERS,
+    CharacterService,
+    EntityService,
+    ExceptionService,
+    MessageService,
+    ModalService,
+    SpinnerService,
+    ToastService
+  ]
 })
-
 @RouteConfig([
-  { path: '/dashboard', name: 'Dashboard', component: DashboardComponent, useAsDefault: true },
+  new Redirect({ path: '/', redirectTo: ['Dashboard'] }),
+  // { path: '/dashboard',  redirectTo: ['/Dashboard']  },
+  new Route({ path: '/dashboard', name: 'Dashboard', component: DashboardComponent}),
+  new Route({ path: '/vehicles/...', name: 'Vehicles', component: VehiclesComponent }),
+  new Route({ path: '/characters/...', name: 'Characters', component: CharactersComponent }),
 ])
-
 export class AppComponent {
-  public title  = 'Tour of Heroes';
-  public heroes = HEROES;
-  public hero: Hero = {
-    id: 1,
-    name: 'Windstorm'
-  };
+  public menuItems = [
+    { caption: 'Dashboard', link: ['Dashboard'] },
+    { caption: 'Characters', link: ['Characters'] },
+    { caption: 'Vehicles', link: ['Vehicles'] }
+  ];
 
-  selectedHero: Hero;
+  constructor(
+    private _messageService: MessageService,
+    private _modalService: ModalService) {
+  }
 
-  onSelect(hero: Hero) { this.selectedHero = hero; }
+  resetDb() {
+    let msg = 'Are you sure you want to reset the database?';
+    this._modalService.activate(msg).then(responseOK => {
+      if (responseOK) {
+        this._messageService.resetDb();
+      }
+    });
+  }
 }

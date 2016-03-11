@@ -8,8 +8,9 @@
     next();
   });
 
-  router.get('/', io.xPoweredBy, function(req, res) {
+  router.get('/dashboard', io.xPoweredBy, function(req, res, next) {
     res.render('app/dashboard/dashboard.component.html');
+    next();
   });
 
   module.exports = router;

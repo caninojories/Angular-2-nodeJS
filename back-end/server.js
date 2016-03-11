@@ -21,15 +21,15 @@
   /*Routes*/
   // io.use_app(app, io);
   // io.use_api(app, io);
-  app.use('/', index);
-  app.use('/dashboard', dashboard);
+  // app.use('/', index);
+  // app.use('/', dashboard);
   app.use(function(err, req, res, next) {
     res.status(err.status || 500).send({
       message: err.message,
       status: err.status || 500
     });
   });
-  // app.use('*', catchAll);
+  app.use('*', index);
 
   /*io.cluster Configuration*/
   if (io.cluster.isMaster) {io.clusterService(io);}

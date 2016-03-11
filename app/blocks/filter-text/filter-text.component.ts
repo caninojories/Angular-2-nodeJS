@@ -10,7 +10,6 @@ export class FilterTextComponent {
 
   constructor() {
     this.changed = new EventEmitter();
-
     // componentHandler.upgradeDom();
   }
 

@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs/Rx';
 
 import { ISpinnerState, SpinnerService } from './spinner.service';
 
-const ACTIVE_CLASS = 'is-active';
+// const ACTIVE_CLASS = 'is-active';
 
 @Component({
   selector: 'story-spinner',
@@ -18,7 +18,7 @@ const ACTIVE_CLASS = 'is-active';
 export class SpinnerComponent implements OnDestroy, OnInit {
   visible = false;
 
-  private _spinnerStateChanged: Subscription<any>;
+  private _spinnerStateChanged: Subscription;
 
   constructor(private _spinnerService: SpinnerService) { }
 

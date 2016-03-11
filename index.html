@@ -1,40 +1,108 @@
 <html>
   <head>
-    <title>Angular 2 QuickStart</title>
+    <title>Sample...</title>
+    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <link rel="stylesheet" href="http://localhost/assets/material.deep_orange-pink.min.css">
+    <link rel="stylesheet" href="http://localhost/assets/sprite-av-white.css">
+    <link rel="stylesheet" href="http://localhost/assets/animate.css">
+    <link rel="stylesheet" href="http://localhost/assets/app.css">
 
     <!-- 1. Load libraries -->
     <!-- IE required polyfills, in this exact order -->
-    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
-    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+    <script src="http://localhost/node_modules/es6-shim/es6-shim.min.js"></script>
+    <script src="http://localhost/node_modules/systemjs/dist/system-polyfills.js"></script>
 
-    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-    <script src="node_modules/rxjs/bundles/Rx.js"></script>
-    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
-    <script src="node_modules/angular2/bundles/router.dev.js"></script>
-    <script src="node_modules/typescript/lib/typescript.js"></script>
+    <script src="http://localhost/node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="http://localhost/node_modules/systemjs/dist/system.src.js"></script>
+    <script src="http://localhost/node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="http://localhost/node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="http://localhost/node_modules/angular2/bundles/router.dev.js"></script>
+    <script src="http://localhost/node_modules/typescript/lib/typescript.js"></script>
 
-    <!-- 2. Configure SystemJS -->
+    <script src="https://code.angularjs.org/2.0.0-beta.8/http.dev.js"></script>
+    <!-- <script src="https://npmcdn.com/a2-in-memory-web-api/web-api.js"></script> -->
+    <script src="http://localhost/node_modules//a2-in-memory-web-api/web-api.js"></script>
+
+    <style>
+        #page-loader {
+            width: 60px;
+            height: 60px;
+            margin: 100px auto;
+            animation: rotate 1.0s infinite ease-in-out, background 1.0s infinite ease-in-out alternate;
+            border-radius: 5px;
+        }
+        @keyframes rotate {
+            0% {
+                transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+            }
+            50% {
+                transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+            }
+            100% {
+                transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+            }
+        }
+        @keyframes background {
+            0% {
+                background-color: #F44336;
+            }
+            25% {
+                background-color: #3F51B5;
+            }
+            50% {
+                background-color: #009688;
+            }
+            75% {
+                background-color: #CDDC39;
+            }
+            100% {
+                background-color: #FFC107;
+            }
+        }
+        .line {
+            height: 60px;
+            width: 60px;
+            text-align: center;
+            margin: 0 30px;
+            line-height: 60px;
+            font-size: 18px;
+            color: #000810;
+            display: inline-block;
+        }
+    </style>
+
     <script>
       System.config({
         transpiler: 'typescript',
+        typescriptOptions: { emitDecoratorMetadata: true },
         packages: {
-          app: {
+          'api': {
+            format: 'es6',
+            defaultExtension: 'ts'
+          },
+          'app': {
             format: 'es6',
             defaultExtension: 'ts'
           }
         }
       });
-      System.import('app/main')
-            .then(null, console.error.bind(console));
-    </script>
-
+    System.import('app/main')
+          .then(function() {
+            var body  = document.getElementById('body');
+            var child = document.getElementById('page-loader');
+            body.removeChild(child);
+          })
+          .catch(function(error) {
+            console.log(error);
+          })
+  </script>
   </head>
 
-  <!-- 3. Display the application -->
-  <body>
-    <my-app>Loading...</my-app>
+  <body id="body">
+    <div id="page-loader"></div>
+    <story-app>
+    </story-app>
   </body>
-
 </html>

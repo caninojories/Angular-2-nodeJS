@@ -3,7 +3,7 @@
 
   /*Express Configuration*/
   module.exports = function(app) {
-    let root = io.path.normalize(__dirname + '../../../');
+    let root = io.path.normalize(__dirname + '/../../');
 
     app.set('views', root);
     app.set('view engine', 'ejs');
@@ -25,8 +25,10 @@
       }
     }));
 
-    app.use('/node_modules', io.express.static(root + '/node_modules'));
+    // app.use('/node_modules', io.express.static(root + '/node_modules'));
     app.use('/app', io.express.static(root + '/app'));
+    app.use('/api', io.express.static(root + '/api'));
+    // app.use('/assets', io.express.static(root + '/assets'));
 
     /*Setup for CORS*/
     app.use(function(req, res, next) {
