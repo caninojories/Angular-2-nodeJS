@@ -1,13 +1,13 @@
  ##
  # Node and Logs
  #
- #node_modules/*
+ node_modules/*
  *.log
 
  ##
  # Typings and Apps
  #
- #typings/
+ typings/*
  app/**/*.js
  app/**/*.map
 
