@@ -1,7 +1,11 @@
 (function() {
   'use strict';
 
-  var util = require('util');
+  var util    = require('util');
+  var data    = [];
+  var length  = [];
+  var time    = 0
+  var counter = 4000;
 
   module.exports = function(require) {
     require.gulp.task('watchJS', function(done) {
@@ -19,7 +23,24 @@
           map
         );
 
-        require.clean(require, files, done);
+        data.push(files);
+
+        counter += time;
+        time    += 4000;
+        var interval = setInterval(function() {
+          counter -= 300;
+          time    -= 300;
+          if (counter <= 0) {
+            clearInterval(interval);
+            counter = 4000;
+            time    = 0;
+          }
+        }, 300);
+
+        setTimeout(function() {
+          console.log('Cleaning...')
+          require.clean(require, files, done);
+        }, time);
       });
     });
   };

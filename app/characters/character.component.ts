@@ -5,12 +5,15 @@ import { Observable, Subscription } from 'rxjs/Rx';
 import { EntityService, ModalService, ToastService } from '../blocks/blocks';
 import { Character, CharacterService } from '../characters/character.service';
 
+declare let componentHandler;
+
 @Component({
   selector: 'story-character',
   templateUrl: 'app/characters/character.component.html',
   styles: ['.mdl-textfield__label {top: 0;}'],
   directives: [ROUTER_DIRECTIVES]
 })
+
 export class CharacterComponent implements CanDeactivate, OnDestroy, OnInit {
   private _dbResetSubscription: Subscription;
 

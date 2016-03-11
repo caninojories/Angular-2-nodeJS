@@ -21,7 +21,6 @@ System.register(['angular2/core', './spinner.service'], function(exports_1, cont
                 spinner_service_1 = spinner_service_1_1;
             }],
         execute: function() {
-            // const ACTIVE_CLASS = 'is-active';
             SpinnerComponent = (function () {
                 function SpinnerComponent(_spinnerService) {
                     this._spinnerService = _spinnerService;

@@ -5,6 +5,8 @@ import { Observable, Subscription } from 'rxjs/Rx';
 import { FilterTextComponent, FilterService, InitCapsPipe } from '../blocks/blocks';
 import { Vehicle, VehicleService } from './vehicle.service';
 
+declare let componentHandler;
+
 @Component({
   selector: 'story-vehicles',
   templateUrl: './app/vehicles/vehicle-list.component.html',

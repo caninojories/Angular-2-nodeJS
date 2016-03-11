@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Rx';
 import { ISpinnerState, SpinnerService } from './spinner.service';
 
 // const ACTIVE_CLASS = 'is-active';
+declare let componentHandler;
 
 @Component({
   selector: 'story-spinner',

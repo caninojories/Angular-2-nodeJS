@@ -5,6 +5,8 @@ import { Observable, Subscription } from 'rxjs/Rx';
 import { EntityService, ModalService, ToastService } from '../blocks/blocks';
 import { Vehicle, VehicleService } from '../vehicles/vehicle.service';
 
+declare let componentHandler;
+
 @Component({
   selector: 'story-vehicle',
   templateUrl: 'app/vehicles/vehicle.component.html',

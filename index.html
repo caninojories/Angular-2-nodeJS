@@ -26,51 +26,48 @@
     <script src="http://localhost/node_modules//a2-in-memory-web-api/web-api.js"></script>
 
     <style>
-        #page-loader {
-            width: 60px;
-            height: 60px;
-            margin: 100px auto;
-            animation: rotate 1.0s infinite ease-in-out, background 1.0s infinite ease-in-out alternate;
-            border-radius: 5px;
+      #pageloader {
+        width: 40px;
+        height: 40px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin: -30px 0 0 -30px;
+        background-color: #c0392b;
+        text-align: center;
+        animation: loaderrotate 2s infinite linear;
+      }
+      #pageloader .dot1, #pageloader .dot2 {
+        width: 60%;
+        height: 60%;
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 10%;
+        background-color: #16a085;
+        border-radius: 100%;
+        animation: loaderbounce 2s infinite ease-in-out;
+      }
+      #pageloader .dot2 {
+        top: auto;
+        bottom: 0px;
+        animation-delay: -1s;
+        background-color: #e05d6f;
+      }
+
+      @keyframes loaderrotate {
+        100% {
+          transform: rotate(360deg);
         }
-        @keyframes rotate {
-            0% {
-                transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-            }
-            50% {
-                transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
-            }
-            100% {
-                transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
-            }
+      }
+      @keyframes loaderbounce {
+        0%, 100% {
+          transform: scale(0);
         }
-        @keyframes background {
-            0% {
-                background-color: #F44336;
-            }
-            25% {
-                background-color: #3F51B5;
-            }
-            50% {
-                background-color: #009688;
-            }
-            75% {
-                background-color: #CDDC39;
-            }
-            100% {
-                background-color: #FFC107;
-            }
+        50% {
+          transform: scale(1);
         }
-        .line {
-            height: 60px;
-            width: 60px;
-            text-align: center;
-            margin: 0 30px;
-            line-height: 60px;
-            font-size: 18px;
-            color: #000810;
-            display: inline-block;
-        }
+      }
     </style>
 
     <script>
@@ -91,7 +88,7 @@
     System.import('app/main')
           .then(function() {
             var body  = document.getElementById('body');
-            var child = document.getElementById('page-loader');
+            var child = document.getElementById('pageloader');
             body.removeChild(child);
           })
           .catch(function(error) {
@@ -101,7 +98,10 @@
   </head>
 
   <body id="body">
-    <div id="page-loader"></div>
+    <div id="pageloader">
+      <div class="dot1"></div>
+      <div class="dot2"></div>
+    </div>
     <story-app>
     </story-app>
   </body>

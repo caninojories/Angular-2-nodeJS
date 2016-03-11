@@ -6,6 +6,8 @@ import { Character, CharacterService } from './character.service';
 import { SortCharactersPipe } from './sort-characters.pipe';
 import { FilterService, FilterTextComponent } from '../blocks/blocks';
 
+declare var componentHandler;
+
 @Component({
   selector: 'story-characters',
   templateUrl: './app/characters/character-list.component.html',
