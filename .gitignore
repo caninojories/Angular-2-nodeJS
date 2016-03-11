@@ -1,17 +1,17 @@
-/**
- * Node and Logs
- */
+ ##
+ # Node and Logs
+ #
  node_modules*
  *.log
 
-/**
- * Typings and Apps
- */
+ ##
+ # Typings and Apps
+ #
  typings*
  app/**/*.js
  app/**/*.map
 
-/**
- * Other
- */
+ ##
+ # Other
+ #
  .DS_Store
