@@ -4,6 +4,7 @@
   "scripts": {
     "start": "npm run global && npm install && npm run run",
     "run": "nodemon back-end/server.js",
+    "run-prod": "NODE_ENV=production nodemon back-end/server.js",
     "typescript-check": "concurrently \"npm run tsc:w\" \"nodemon back-end/server.js\"",
     "typescript-watch": "concurrently \"nodemon back-end/server.js\" \"gulp watchJS\"",
     "global": "npm install typings -g && npm install concurrently -g",
@@ -17,6 +18,7 @@
     "a2-in-memory-web-api": "^0.1.8",
     "angular2": "^2.0.0-beta.8",
     "body-parser": "^1.15.0",
+    "chalk": "^1.1.1",
     "compression": "^1.6.1",
     "ejs": "^2.4.1",
     "es6-promise": "^3.0.2",

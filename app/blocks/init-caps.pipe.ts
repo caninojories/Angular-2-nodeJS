@@ -10,5 +10,3 @@ export class InitCapsPipe implements PipeTransform {
       });
   }
 }
-
-

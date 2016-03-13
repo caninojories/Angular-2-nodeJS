@@ -26,9 +26,21 @@
     }));
 
     // app.use('/node_modules', io.express.static(root + '/node_modules'));
-    app.use('/app', io.express.static(root + '/app'));
-    app.use('/api', io.express.static(root + '/api'));
-    // app.use('/assets', io.express.static(root + '/assets'));
+    if (process.env.NODE_ENV === 'production') {
+      app.use('/app', io.express.static(root + '/app', {
+        maxAge: '1y'
+      }));
+      app.use('/api', io.express.static(root + '/api', {
+        maxAge: '1y'
+      }));
+    } else {
+      app.use('/app', io.express.static(root + '/app', {
+        maxAge: '0'
+      }));
+      app.use('/api', io.express.static(root + '/api', {
+        maxAge: '0'
+      }));
+    }
 
     /*Setup for CORS*/
     app.use(function(req, res, next) {
