@@ -27,17 +27,17 @@
 
     // app.use('/node_modules', io.express.static(root + '/node_modules'));
     if (process.env.NODE_ENV === 'production') {
-      app.use('/app', io.express.static(root + '/app', {
+      app.use('/app', io.serveStatic(root + '/app', {
         maxAge: '1y'
       }));
-      app.use('/api', io.express.static(root + '/api', {
+      app.use('/api', io.serveStatic(root + '/api', {
         maxAge: '1y'
       }));
     } else {
-      app.use('/app', io.express.static(root + '/app', {
+      app.use('/app', io.serveStatic(root + '/app', {
         maxAge: '0'
       }));
-      app.use('/api', io.express.static(root + '/api', {
+      app.use('/api', io.serveStatic(root + '/api', {
         maxAge: '0'
       }));
     }
