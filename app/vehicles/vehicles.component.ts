@@ -14,7 +14,7 @@ import { VehicleService } from './vehicle.service';
   providers: [VehicleService]
 })
 @RouteConfig([
-  { path: '/list', name: 'Vehicles', component: VehicleListComponent, useAsDefault: true },
+  { path: '/', name: 'Vehicles', component: VehicleListComponent, useAsDefault: true },
 	// { path: '/list/:id', name: 'Vehicles', component: VehicleListComponent	},
 	{ path: '/:id', name: 'Vehicle', component: VehicleComponent }
 ])

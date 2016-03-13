@@ -1,7 +1,7 @@
 <article class="template animated slideInRight">
   <h4>My Characters</h4>
 
-  <button class="dashboard-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" [routerLink]="['Character', {id: 'new'}]">Add</button>
+  <button class="dashboard-button mdl-button mdl-color--accent mdl-color-text--white mdl-js-button mdl-button--raised mdl-js-ripple-effect" [routerLink]="['Character', {id: 'new'}]">Add</button>
 
   <filter-text (changed)="filterChanged($event)"></filter-text>
 

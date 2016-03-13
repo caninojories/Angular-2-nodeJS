@@ -1,0 +1,108 @@
+<html>
+  <head>
+    <title>Sample...</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- inject:css -->
+    <link async rel="stylesheet" href="http://angular-2-node.io:81/assets/material.deep_orange-pink.min.css">
+    <link async rel="stylesheet" href="http://angular-2-node.io:81/assets/sprite-av-white.css">
+    <link async rel="stylesheet" href="http://angular-2-node.io:81/assets/animate.css">
+    <link async rel="stylesheet" href="http://angular-2-node.io:81/assets/app.css">
+    <!-- endinject -->
+
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <!-- inject:js -->
+    <script async src="http://angular-2-node.io:81/node_modules/es6-shim/es6-shim.min.js"></script>
+    <script src="http://angular-2-node.io:81/node_modules/systemjs/dist/system-polyfills.js"></script>
+    <script async src="http://angular-2-node.io:81/node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="http://angular-2-node.io:81/node_modules/systemjs/dist/system.src.js"></script>
+    <script async src="http://angular-2-node.io:81/node_modules/rxjs/bundles/Rx.js"></script>
+    <script async src="http://angular-2-node.io:81/node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script async src="http://angular-2-node.io:81/node_modules/angular2/bundles/router.dev.js"></script>
+    <script async src="http://angular-2-node.io:81/node_modules/typescript/lib/typescript.js"></script>
+    <script async src="http://angular-2-node.io:81/node_modules/angular2/bundles/http.dev.js"></script>
+    <script async src="http://angular-2-node.io:81/node_modules/a2-in-memory-web-api/web-api.js"></script>
+    <!-- endinject -->
+
+    <style>
+      #pageloader {
+        width: 40px;
+        height: 40px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin: -30px 0 0 -30px;
+        background-color: #c0392b;
+        text-align: center;
+        animation: loaderrotate 2s infinite linear;
+      }
+      #pageloader .dot1, #pageloader .dot2 {
+        width: 60%;
+        height: 60%;
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 10%;
+        background-color: #16a085;
+        border-radius: 100%;
+        animation: loaderbounce 2s infinite ease-in-out;
+      }
+      #pageloader .dot2 {
+        top: auto;
+        bottom: 0px;
+        animation-delay: -1s;
+        background-color: #e05d6f;
+      }
+
+      @keyframes loaderrotate {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes loaderbounce {
+        0%, 100% {
+          transform: scale(0);
+        }
+        50% {
+          transform: scale(1);
+        }
+      }
+    </style>
+
+    <script>
+      System.config({
+        transpiler: 'typescript',
+        typescriptOptions: { emitDecoratorMetadata: true },
+        packages: {
+          'api': {
+            format: 'es6',
+            defaultExtension: 'ts'
+          },
+          'app': {
+            format: 'es6',
+            defaultExtension: 'ts'
+          }
+        }
+      });
+    System.import('app/main')
+          .then(function() {
+            var body  = document.getElementById('body');
+            var child = document.getElementById('pageloader');
+            body.removeChild(child);
+          })
+          .catch(function(error) {
+            console.log(error);
+          })
+  </script>
+  </head>
+
+  <body id="body">
+    <div id="pageloader">
+      <div class="dot1"></div>
+      <div class="dot2"></div>
+    </div>
+    <story-app>
+    </story-app>
+  </body>
+</html>
+</html>
