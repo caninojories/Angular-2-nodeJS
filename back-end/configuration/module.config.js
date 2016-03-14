@@ -26,7 +26,7 @@
 
     port              : process.env.PORT || 3001,
     environment       : process.env.NODE_ENV || 'development',
-    // faviconPath       : rootPath + 'front-end/resources/favicon.ico',
+    faviconPath       : 'app/favicon.ico',
 
     /*Services*/
     xPoweredBy        : require(service + 'xPoweredBy'),
