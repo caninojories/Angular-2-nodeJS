@@ -11,7 +11,7 @@
     app.set('x-powered-by', false);
     app.set('port', io.port);
     app.use(io.compression());
-    // app.use(io.favicon(io.faviconPath));
+    app.use(io.favicon(io.faviconPath));
     app.use(io.morgan('dev'));
     app.use(io.bodyParser.urlencoded({
       extended: true
