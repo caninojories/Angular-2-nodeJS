@@ -9,7 +9,6 @@
   });
 
   router.get('/', io.xPoweredBy, function(req, res) {
-    console.log(req.headers);
     res.render('index.html', {
       ip : 'http://' + req.headers.host.replace(":3001", '')
     });
