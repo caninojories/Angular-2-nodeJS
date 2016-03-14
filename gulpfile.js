@@ -26,4 +26,5 @@
   require('./gulp/wiredep')(module);
   require('./gulp/inject')(module);
   require('./gulp/watchJS')(module);
+  require('./gulp/less-watch')(module);
 }());
