@@ -25,7 +25,6 @@
       }
     }));
 
-    // app.use('/node_modules', io.express.static(root + '/node_modules'));
     if (process.env.NODE_ENV === 'production') {
       app.use('/app', io.serveStatic(root + '/app', {
         maxAge: '1y'
