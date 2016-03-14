@@ -19,8 +19,6 @@
       }
    };
 
-   console.log(urlPath);
-
    var config = {
      index  : 'app/index.html',
      js     : [
@@ -41,6 +39,10 @@
        'assets/animate.css',
        'assets/app.css'
      ],
+     less   : [
+       'less/**/*.less'
+     ],
+     lessFolder: 'assets/css',
      client : 'app/'
    };
 
