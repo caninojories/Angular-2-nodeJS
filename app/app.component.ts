@@ -9,7 +9,7 @@ import { CharactersComponent, CharacterService } from './characters/characters';
 import { DashboardComponent } from './dashboard/dashboard';
 import { VehiclesComponent } from './vehicles/vehicles';
 import { CONFIG, MessageService } from './shared/shared';
-import { EntityService, ExceptionService, ModalComponent, ModalService, SpinnerComponent, SpinnerService, ToastComponent, ToastService } from './blocks/blocks.ts';
+import { EntityService, ExceptionService, ModalComponent, ModalService, SpinnerComponent, SpinnerService, ToastComponent, ToastService } from './blocks/blocks';
 
 @Component({
   selector: 'story-app',
