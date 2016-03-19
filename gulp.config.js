@@ -21,6 +21,7 @@
 
    var config = {
      index  : 'app/index.html',
+     port   : '81',
      js     : [
        'node_modules/es6-shim/es6-shim.min.js',
        'node_modules/systemjs/dist/system-polyfills.js',
