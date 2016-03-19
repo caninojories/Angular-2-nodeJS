@@ -19,7 +19,7 @@
         .src(require.config.index)
         .pipe(require.$.inject(require.gulp.src(require.config.js, {read: false}), {
           /*ignorePath: '../',*/
-          addPrefix: 'http://angular-2-node.io:81',
+          addPrefix: '<%= ip%>:' + require.config.port,
           addRootSlash: false
         }))
         /*inject it to our client view*/
@@ -32,7 +32,7 @@
         .src(require.config.index)
         .pipe(require.$.inject(require.gulp.src(require.config.css, {read: false}), {
           // ignorePath: '..
-          addPrefix: 'http://angular-2-node.io:81',
+          addPrefix: '<%= ip%>:' + require.config.port,
           addRootSlash: false
         }))
         .pipe(require.gulp.dest(require.config.client));
